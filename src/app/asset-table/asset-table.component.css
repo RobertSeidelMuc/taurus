@@ -1,0 +1,82 @@
+th {
+    font-size: small;
+    font-weight: 500;
+    opacity: 0.8;
+    padding-left: 8px;
+    padding-right: 8px;
+    text-align: left;
+  }
+
+td {
+    padding-left: 8px;
+    padding-right: 8px;
+    font-size: medium;
+    text-align: left;
+  }
+
+.first-column {
+    padding-left: 24px;
+}
+
+.last-column {
+    padding-right: 24px;
+}
+
+@media (max-width: 425px) {
+    .first-column {
+        padding-left: 12px;
+    }
+
+    .last-column {
+        padding-right: 12px;
+    }
+}
+
+@media (max-width: 320px) {
+    td {
+        font-size: small;
+    }
+}
+
+.positive {
+    color: limegreen;
+}
+.negative {
+    color: red;
+}
+.card {
+    background-color: #37474f;
+    min-height: 100%;
+}
+
+.card-content {
+    padding: 0px;
+}
+.select-dropdown{
+    color: #ffffff !important
+}
+
+.icon {
+    width: 25px;
+    height: 25px;
+  }
+
+.coin-info-group {
+    display: flex;
+    align-items: center;
+}
+
+.right-space {
+margin-right: 12px;
+}
+
+.input-field{
+    color: #ffffff !important
+}
+input {
+    color: #ffffff !important
+}
+.white-text {
+    color: (white, white);
+    
+}

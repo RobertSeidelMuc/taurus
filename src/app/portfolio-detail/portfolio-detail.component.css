@@ -1,0 +1,163 @@
+h1 {
+    padding-top: 1em;
+}
+
+h2 {
+    font-size: x-large;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    margin-top: 1em;
+  }
+
+.no-coins-yet {
+    font-size: large;
+    font-weight: 300;
+}
+
+@media (max-width: 800px) {
+    .card {
+      font-size: 11px;
+    }
+    
+  }
+
+.card-with-table {
+    padding: 0;
+}
+
+.card-action {
+    background-color: #455a64;
+    transition: ease 250ms;
+}
+
+.card-action:hover {
+    background-color: #546e7a;
+}
+
+.history-subtitle {
+    margin-top: 0.6em;
+    font-weight: 500;
+}
+
+.history-infos {
+    font-weight: 300;
+}
+
+th {
+    font-size: small;
+    font-weight: 500;
+    opacity: 0.8;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+td {
+    padding-left: 8px;
+    padding-right: 8px;
+    font-size: medium;
+}
+
+.hide-smaller-800px {
+    display: inline;
+}
+
+.hide-larger-800px {
+    display: none;
+}
+
+@media (max-width: 800px) {
+    th {
+      padding: 10px 3px !important;
+    }
+    
+    td {
+      padding: 10px 0px !important;
+    }
+    
+    .first-column {
+        padding-left: 36px !important;
+    }
+
+    .last-column {
+        padding-right: 12px !important;
+    }
+
+    .hide-smaller-800px {
+        display: none;
+    }
+
+    .hide-larger-800px {
+        display: inline;
+    }
+
+    .core-infos {
+        font-size: 1rem !important;
+        font-weight: 200 !important;
+    }
+}
+
+
+.first-column {
+    padding-left: 24px;
+}
+  
+.last-column {
+    padding-right: 24px;
+}
+
+.core-infos {
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.full {
+    display:block;
+    width:100%;
+}
+
+.invisible {
+    display: none;
+}
+
+.negative {
+color: red;
+}
+
+.positive {
+color: #2c2;
+}
+
+ul.collection {
+    border: none;
+    margin: 0;
+}
+
+li.collection-item {
+    background-color: #37474f;
+    padding-left: 24px;
+    padding-right: 24px;
+    border-color: rgba(0, 0, 0, 0.2);
+    transition: ease 250ms;
+}
+
+li.collection-item:hover {
+    background-color: #455a64;
+    transition: ease 250ms;
+}
+
+.transaction-history {
+    padding: 0;
+    margin: 0;
+}
+
+.fixed-width {
+    display: inline-block;
+    width: 7em;
+}
+

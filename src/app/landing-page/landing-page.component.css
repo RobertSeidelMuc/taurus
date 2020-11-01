@@ -1,0 +1,154 @@
+h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: x-large;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+}
+
+th {
+  font-size: small;
+  font-weight: 500;
+  opacity: 0.8;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+td {
+  padding-left: 8px;
+  padding-right: 8px;
+  font-size: medium;
+}
+
+.first-column {
+  padding-left: 24px;
+}
+
+.last-column {
+  padding-right: 24px;
+}
+
+@media (max-width: 425px) {
+  .first-column {
+    padding-left: 12px;
+  }
+  
+  .last-column {
+    padding-right: 12px;
+  }
+}
+
+@media (max-width: 320px) {
+  td {
+    font-size: small;
+  }
+}
+
+p {
+  font-size: large;
+  font-weight: 300;
+}
+
+.welcome-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 450px;
+  height: 260px;
+  max-width: 100%;
+  overflow: hidden;
+  align-self: center;
+  margin-top: 50px;
+  padding-left: 30px;
+}
+
+.welcome-image {
+  width: 450px;
+  max-width: 100%;
+}
+
+.btn-large {
+  margin-top: 1.3rem;
+}
+
+.btn-large:hover {
+  background-color: #43a047;
+  transform: scale(1.025);
+  transition: ease 250ms;
+}
+
+.btn-caption {
+  margin-top: 0.5rem;
+  font-size: medium;
+  font-weight: 400;
+}
+
+.btn-caption a {
+  color: #ce93d8
+}
+
+.btn-caption a:hover {
+  color: #E1BEE7;
+  transition: ease 250ms;
+}
+
+.currency-list {
+  padding: 0;
+}
+
+.coin-info-group {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  width: 25px;
+  height: 25px;
+}
+
+.card .card-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0px;
+}
+
+.drop-down-icon {
+  color: rgba(0,0,0,0.7);
+  transform: scale(1.5);
+}
+
+.left-space {
+  margin-left: 12px;
+}
+
+.right-space {
+  margin-right: 12px;
+}
+
+.currency-list td.chart-cell {
+  padding: 0px;
+}
+
+.invisible {
+  display: none;
+}
+
+.modal {
+  max-width: 600px;
+}
+
+.loginIcon {
+  height: 25px;
+  padding-top: 10px;
+  padding-right: 10px;
+}
+
+.label-lifted {
+  transform: translateY(-14px) scale(0.8);
+}

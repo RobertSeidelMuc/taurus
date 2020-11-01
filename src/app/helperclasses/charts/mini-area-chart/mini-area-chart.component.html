@@ -1,0 +1,17 @@
+<div *ngIf="chartOptions" class="chart-container">
+  <apx-chart
+    #chart
+    [series]="chartOptions.series"
+    [chart]="chartOptions.chart"
+    [colors]="chartOptions.colors"
+    [yaxis]="chartOptions.yaxis"
+    [dataLabels]="chartOptions.dataLabels"
+    [markers]="chartOptions.markers"
+    [stroke]="chartOptions.stroke"
+    [grid]="chartOptions.grid"
+    [xaxis]="chartOptions.xaxis"
+    [yaxis]="chartOptions.yaxis"
+    [tooltip]="chartOptions.tooltip"
+    [annotations]="chartOptions.annotations"
+  ></apx-chart>
+</div>

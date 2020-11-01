@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col s12 m12 l12">
+    <h2 class="white-text">Beliebteste Währungen</h2>
+    <div class="card">
+      <div class="card-content currency-list">
+        <table class="highlight">
+          <thead>
+            <tr>
+              <th class="first-column">Name</th>
+              <th>Aktueller Kurs</th>
+              <th>24h-Trend</th>
+              <th class="hide-on-small-ext last-column">Verlauf</th>
+            </tr>
+          </thead>
+  
+          <tbody>
+            <tr [class.pointer]="auth.user | async" [routerLink]="['/asset-detail', ticker.symbol + 'USDT']" *ngFor="let ticker of tickerDisplay; let i = index" [class.invisible]="lastFiveInvisible && i >= 5" #tablerow>
+              <td class="first-column">
+                <div class="coin-info-group">
+                  <img [src]="ticker.icon" class="icon"><div class="left-space right-space">{{ticker.symbol}}</div><div class="softer hide-on-tiny">{{cryptoCurrencyNames[ticker.symbol]}}</div>
+                </div>
+              </td>
+
+              <td>{{ticker.currentPrice}}</td>
+              <td  [class.green-font]="ticker.positive===1" [class.red-font]="ticker.positive===-1">{{ticker.changeInPercent}}</td>
+              <td class="hide-on-small-ext chart-cell last-column">
+                <app-mini-area-chart *ngIf="ticker.changeInPercent !== '–'" [symbol]="ticker.symbol" [colorindicator]="ticker.positive" [changeinpercent]="ticker.changeInPercent"></app-mini-area-chart>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card-action align-center softer pointer z-depth-4" (click)="expandTable()" #expandaction>
+        <i class="material-icons drop-down-icon">{{ tableDropDownArrow }}</i>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col s6 m6 l6">
+    <app-topsflopscard title="Tops" [currencydata]="topCurrencies"></app-topsflopscard>
+  </div>
+  <div class="col s6 m6 l6">
+    <app-topsflopscard title="Flops" [currencydata]="flopCurrencies"></app-topsflopscard>
+  </div>
+</div>

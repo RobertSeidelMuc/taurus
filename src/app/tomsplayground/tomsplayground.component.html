@@ -1,0 +1,28 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <div class="row section">
+    <div class="col">
+      <!-- Modal Trigger -->
+      <button data-target="modal1" class="btn modal-trigger">Modal</button>
+    </div>
+  </div>
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+
+    </div>
+    <div class="modal-footer">
+      <button class="modal-action modal-close waves-effect waves-green btn-flat">Agree</button>
+    </div>
+  </div>
+
+  <button (click)="getCollection()">Hole Namen</button>
+  <ul>
+    <li class="text" *ngFor="let user of userCollection | async">
+      {{user.name | json}}
+    </li>
+  </ul>
+  <app-portfolio></app-portfolio>
+
+
+  

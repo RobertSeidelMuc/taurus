@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "taurus-36048",
+    "taurus": "taurus-36048"
+  },
+  "targets": {
+    "taurus-36048": {
+      "hosting": {
+        "taurus": [
+          "taurus-36048"
+        ]
+      }
+    }
+  }
+}

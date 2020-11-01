@@ -1,0 +1,99 @@
+main {
+  flex: 1 0 auto;
+}
+
+nav {
+  position: fixed; 
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  transition: top 0.3s;
+}
+
+.footer-element {
+  margin-left: 1em;
+}
+
+.navbar-logo-box {
+  enable-background: new 0 0 27.505 27.505;
+  width: 40px;
+  height: 40px;
+  margin-left: 24px;
+  margin-right: 0.25em;
+  display: flex !important;
+  align-items: center;
+}
+
+.navbar-logo {
+  width: 40px;
+  height: 40px;
+}
+
+.logout {
+  margin-left: 0.5rem;
+}
+
+a.breadcrumb {
+  font-size: small;
+  font-weight: 300;
+}
+
+.breadcrumb:before {
+  height: 1em;
+}
+
+#breadcrumb-container {
+  height: 37px;
+  min-height: 37px !important;
+  border-top-style: solid;
+  border-top-color: rgba(255, 255, 255, 0.2);
+  border-top-width: 1px;
+}
+
+.breadcrumb-wrapper {
+  padding-left: 24px;
+  display: flex;
+  align-items: center;
+  height: 35px;
+  min-height: 35px !important;
+}
+
+.slideup {
+  top: -64px; 
+}
+
+@media (min-width: 993px) {
+  main {
+    padding-top: 120px;
+  }
+}
+
+@media (max-width: 992px) {
+  main {
+    padding-top: 60px;
+  }
+}
+
+
+.modal {
+  max-width: 600px;
+}
+.logintext {
+  text-align: center;
+}
+.loginIcon {
+  height: 25px;
+  padding-top: 10px;
+  padding-right: 10px;
+}
+
+.label-lifted {
+  transform: translateY(-14px) scale(0.8);
+}
+
+p {
+  font-size: large;
+  font-weight: 300;
+}
+
+

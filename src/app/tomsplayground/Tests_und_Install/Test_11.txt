@@ -1,0 +1,13 @@
+const yourData = await   
+admin.firestore().collection(THE_COLLECTION_YOU\_WANT_TO_QUERY).get().then((doc) => {
+   const temp = \[\]
+   const response = data.forEach((doc) => {
+     temp.push(doc.data())
+  })
+  return temp
+})
+
+// so here the yourData is iterable... here comes the part you just mentioned
+for (let doc of yourData) {
+   console.log(doc) // each element is here!
+}

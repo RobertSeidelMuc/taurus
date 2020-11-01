@@ -1,0 +1,105 @@
+.negative {
+    color: #f44336;
+}
+    
+.positive {
+    color: #32cd32;
+}
+
+.modal-content .row {
+    margin-top: 2.5rem;
+  }
+  
+.quit-delWatchlist {
+  margin-left: 0.5em !important;
+}
+
+.delWatchlist-button {
+  background-color: #cc0000;
+}
+
+.card-info-icon-delete:hover {
+  color: #f44336;
+  transition: ease 500ms;
+}
+
+.card-info-icon-delete {
+  color: #444;
+}
+
+.card-content {
+  padding: 0;
+}
+
+h2 {
+  font-size: x-large;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+}
+
+th {
+  font-size: small;
+  font-weight: 500;
+  opacity: 0.8;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+td {
+  padding-left: 8px;
+  padding-right: 8px;
+  font-size: medium;
+}
+
+@media (max-width:374px) {
+  td {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+}
+
+.first-column {
+  padding-left: 12px;
+}
+
+.last-column {
+  padding-right: 12px;
+}
+
+@media (max-width: 992px) {
+  .first-column {
+    padding-left: 12px;
+  }
+  
+  .last-column {
+    padding-right: 12px;
+  }
+}
+
+@media (max-width: 992px) {
+  td {
+    font-size: small;
+  }
+
+}
+
+.card-info-icon-delete {
+  color: #aaa;
+}
+
+.coin-info-group {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  width: 25px;
+  height: 25px;
+  margin-right: 0.6em;
+}
+
+.nowrap {
+  word-wrap: none;
+  white-space: nowrap;
+
+}

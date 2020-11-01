@@ -1,0 +1,1 @@
+afs.collection('items', ref => ref.where('size', '==', 'large'))

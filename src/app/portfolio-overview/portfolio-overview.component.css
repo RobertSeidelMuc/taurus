@@ -1,0 +1,103 @@
+h2 {
+  font-size: x-large;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  margin-top: 1.2rem;
+}
+
+h4 {
+  font-size: x-large;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+}
+
+.ueberschrift {
+  margin-bottom: 7px;
+}
+
+#add-portfolio-btn {
+  position: fixed;
+  bottom: 40px;
+  z-index: 999;
+}
+
+#add-portfolio-btn:hover {
+  background-color: #43a047;
+  transform: scale(1.025) translate(-40px, 0px);;
+  transition: ease 250ms;
+  transform-origin: center;
+}
+
+.tap-target {
+  background-color: #43a047;
+  color: white;
+}
+
+.btn-floating:hover {
+  background-color: #43a047;
+}
+
+.btn {
+  background-color: #388e3c;
+}
+
+.btn:hover {
+  background-color: #43a047;
+}
+
+.modal {
+  max-width: 500px;
+}
+
+.input-field {
+  margin-top: 2.5rem;
+}
+
+#quit-portfolio-add {
+  margin-left: 0.5em;
+}
+
+.modal {
+  height: auto;
+  box-sizing: border-box;
+}
+
+.modal-content {
+  height: auto;
+  box-sizing: border-box;
+}
+
+.modal-footer {
+  box-sizing: border-box;
+  min-height: 56px;
+  height: auto;
+  padding-right: 12px;
+}
+
+@media (max-width: 600px) {
+  #add-portfolio-btn {
+    left: 90%;
+    transform-origin: center;
+    transform: translate(-40px, 0px);
+  }
+}
+
+/* m6 = 6 * 100 / 12 = 50 %
+85% container width = 7,5 % margin left; 50% of 85% = 42,5% + 7,5% = 50 %; */
+@media (min-width: 601px) {
+  #add-portfolio-btn {
+    left: 50%;
+    transform-origin: center;
+    transform: translate(-40px, 0px);
+  }
+}
+
+/* l7 = 7 * 100 / 12 = 58%
+70% container width = 15% margin left; 58% of 70% = 40,6 % + 15 % = 55,6% */
+@media (min-width: 993px) {
+  #add-portfolio-btn {
+    left: 55.6%;
+    transform-origin: center;
+    transform: translate(-40px, 0px);
+  }
+}

@@ -1,0 +1,58 @@
+
+  <td [routerLink]="['/asset-detail', coin.name + 'USDT']" *ngIf="(index+3) % 2 === 1" rowspan="2" class="first-column pointer">
+    <b>
+      <div class="icon-group">
+        <img class="icon hide-on-tiny" [src]="iconUrl" onerror="this.src='../assets/cryptocurrency-icons/svg/color/generic.svg';">
+        <span>
+          {{ coin.name }}
+        </span>
+      </div>
+    </b>
+  </td>
+  <td  [routerLink]="['/asset-detail', coin.name + 'USDT']" *ngIf="(index+3) % 2 === 1" class="pointer">
+    {{ coin.currentValue * coin.amount | number:'1.2-2':'de-DE' }}&nbsp;&#36;
+  </td>
+  <td  [routerLink]="['/asset-detail', coin.name + 'USDT']" *ngIf="(index+3) % 2 === 1" class="pointer">
+    {{ coin.currentValue | number:'1.2-2':'de-DE' }}&nbsp;&#36;
+  </td>
+  <td  [routerLink]="['/asset-detail', coin.name + 'USDT']" *ngIf="(index+3) % 2 === 1" class="pointer">
+    {{ coin.investment | number:'1.2-2':'de-DE' }}&nbsp;&#36;
+  </td>
+  <td  [routerLink]="['/asset-detail', coin.name + 'USDT']" *ngIf="(index+3) % 2 === 1" class="pointer">
+    {{ coin.amount | number:'1.1':'de-DE'}}
+  </td>
+  <td  [routerLink]="['/asset-detail', coin.name + 'USDT']" *ngIf="(index+3) % 2 === 1" class="last-column pointer">
+    <span [ngClass]="{'negative': ((coin.currentValue * coin.amount - coin.investment) / coin.investment) * 100, 'positive': ((coin.currentValue * coin.amount - coin.investment) / coin.investment) * 100 >= 0}"><span *ngIf="((coin.currentValue * coin.amount - coin.investment) / coin.investment) * 100 > 0">+</span>{{ ((coin.currentValue * coin.amount - coin.investment) / coin.investment) * 100 | number:'1.0-2':'de-DE' }}&nbsp;%</span>
+  </td>
+  <td *ngIf="(index+3) % 2 === 0" colspan="5" class="no-padding">
+    <div class="card-action pointer align-center softer" (click)="expandTable()" #expandaction>
+      <p>{{ tableDropDownHinweis }}</p><i class="material-icons drop-down-icon">{{ tableDropDownArrow }}</i>
+    </div>
+    <ul class="collection" [class.invisible]="transactionsInvisible">
+        <li class="collection-item hoverable" *ngFor="let trans of coin.transactions; let i = index"
+            [class.invisible]="transactionsInvisible && i >= 0" #tablerow>            
+          <div class="row">
+            <div class="history-subtitle col s12">
+              Transaktions-ID: {{ trans.id }}
+            </div>
+            <div class ="history-infos">
+              <div class="col s12 m6 l6">
+                <span class="fixed-width softer">Menge:</span> {{ trans.Menge | number:'1.1':'de-DE' }}<br>
+                <span *ngIf="trans.Menge > 0; else soldon"><span class="fixed-width softer">Gekauft am:</span> {{ trans.Gekauft_wann.toMillis() | date:'dd.MM.yyyy HH:mm:ss' }}<br></span>
+                <ng-template #soldon>
+                    <span ><span class="fixed-width softer">Verkauft am:</span> {{ trans.Gekauft_wann.toMillis() | date:'dd.MM.yyyy HH:mm:ss' }}</span>
+                </ng-template>
+              </div>
+              <div class="col s12 m6 l6">
+                <span *ngIf="trans.Menge > 0; else verkaufswert"><span class="fixed-width softer">Einstandswert:</span> {{ trans.Einstandswert | number:'1.2-2':'de-DE' }}&nbsp;&#36;<br></span>
+                <ng-template #verkaufswert>
+                  <span ><span class="fixed-width softer">Verkaufswert:</span> {{ trans.Einstandswert * -1 | number:'1.2-2':'de-DE' }}&nbsp;&#36;<br></span>
+                </ng-template>
+              </div>
+            </div>
+          </div>
+        </li>
+    </ul>
+  </td>
+
+

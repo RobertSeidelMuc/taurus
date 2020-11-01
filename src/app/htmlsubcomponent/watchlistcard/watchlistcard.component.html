@@ -1,0 +1,63 @@
+<div class="card">
+    <div class="card-content">
+        <table class="highlight">
+            <thead>
+                <tr>
+                    <th class="first-column">Name</th>
+                    <th><span class="hide-on-med-and-down">Aktueller </span>Kurs</th>
+                    <th>24h<span class="hide-on-tiny">-Trend</span></th>
+                    <th class="last-column">&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody *ngIf="watchlist.length != 0">
+                <tr  [class.pointer]="auth.user | async" [routerLink]="['/asset-detail', entry.symbol]" *ngFor="let entry of watchlistObjects">
+                    <td class="first-column">
+                        <div class="coin-info-group">
+                            <img [src]="entry.icon"
+                                onerror="this.src='../../assets/cryptocurrency-icons/svg/color/generic.svg';"
+                                class="icon right-space hide-on-med-and-down">
+                            <div class="right-space">{{entry.symbol}}</div>
+                        </div>
+                    </td>
+                    <td>{{entry.currentPrice | number:'1.2-8':'de-DE' }}&nbsp;&#36;</td>
+                    <td>
+                        <span class="nowrap">
+                            <span *ngIf="entry.changePercentage >= 0"
+                                [ngClass]="{'negative': entry.changePercentage < 0, 'positive': entry.changePercentage >= 0}">+</span>
+                            <span
+                                [ngClass]="{'negative': entry.changePercentage < 0, 'positive': entry.changePercentage >= 0}">{{entry.changePercentage | number:'1.2-2':'de-DE'}}&nbsp;%
+                            </span>
+                        </span>
+                    </td>
+                    <td class="last-column">
+                        <a id="delete-watchlist-btn" class="modal-trigger"
+        #delwatchlistbtn href="#modalDelWatchlist"><i class="material-icons card-info-icon card-info-icon-delete" (click)="set2Del([entry.symbol])">delete_forever</i></a>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody *ngIf="watchlist.length === 0">
+                <tr>
+                    <td class="first-column last-column" colspan="4">
+                        Keine Watchlisteinträge vorhanden
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div id="modalDelWatchlist" class="modal">
+    <div class="modal-content">
+        <h4>Coin aus der Watchlist löschen</h4>
+        <div class="row">
+            <div class="col s12">
+                <p>Möchtest du den Coin <b>{{ entr2del }}</b> wirklich aus der Watchlist löschen?</p>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a class="modal-close waves-effect waves-red btn delWatchlist-button" (click)="delFromWatchlist()">Löschen</a>
+        <a id="quit-delWatchlist" class="modal-close waves-effect waves-red btn-flat pointer">Abbrechen</a>
+    </div>
+</div>
+
+

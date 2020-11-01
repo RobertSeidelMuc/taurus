@@ -1,0 +1,90 @@
+<div class="card z-depth-2">
+  <div class="card-image">
+    <div class="image-container">
+      <img [src]="imageURL">
+      <div class="portfolio-info">
+        <div class="info-row-one">
+          <div class="card-title">{{ portfolio.name }}</div>
+          <div class="info-icon-group">
+            <a class="modal-trigger" [href]="renameModalIdHref" (click)="resetRenameInput()">
+              <i class="material-icons card-info-icon">edit</i>
+            </a>
+            <a class="modal-trigger" [href]="deleteModalIdHref" (click)="resetDeletionInput()">
+              <i class="material-icons card-info-icon card-info-icon-delete">delete_forever</i>
+            </a>
+          </div>
+        </div>
+        <div class="info-row-two white-text">
+          <div class="inner-row"><div class="thin fixed-width">Wert:</div> <div *ngIf="calculations.portfolioValue != -1; else preloader1" class="right-align">{{ calculations.portfolioValue.toLocaleString('de-DE', { style: 'currency', currency: 'USD'}) }}</div></div>
+          <div class="inner-row"><div class="thin fixed-width">Performance:</div> <div *ngIf="calculations.portfolioValue != -1; else preloader2" class="right-align" [class.green-text]="positiveDevelopment === 1" [class.red-text]="positiveDevelopment === -1">{{ portfolioDevelopment }}</div></div>
+          <ng-template #preloader1>
+            <div class="preloader-wrapper active">
+              <div class="spinner-layer">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div><div class="gap-patch">
+                  <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template #preloader2>
+            <div class="preloader-wrapper active">
+              <div class="spinner-layer">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div><div class="gap-patch">
+                  <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div [routerLink]="['/portfolio-detail', portfolio.id]" class="card-action pointer right-align hoverable">
+    <div class="icon-group"><i class="material-icons card-action-icon softer">folder_open</i><a class="right-align">Portfolio öffnen</a></div>
+  </div>
+</div>
+
+<div [id]="deleteModalId" class="modal">
+  <div class="modal-content">
+    <h4>Portfolio löschen</h4>
+    <div class="row">
+      <div class="col s12">
+        <p>Möchtest du das Portfolio <b>{{ portfolio.name }}</b> wirklich löschen? Alle enthaltenen Assets gehen verloren.</p>
+        <p>Gib zum Bestätigen &#8222;<b>{{ portfolio.name }}</b>&#8220; ein:</p>
+      </div>
+      <div class="input-field col s12">
+        <input [id]="deleteModalIdInput" type="text" class="validate" (keyup)="setDeletionValidation($event)">
+        <label [for]="deleteModalIdInput">Portfolio-Namen eingeben</label>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-close waves-effect waves-red btn portfolio-delete-button" [class.disabled]="deletionValidation !== portfolio.name" (click)="deletePortfolio()">Löschen</a>
+    <a class="quit-portfolio-delete modal-close waves-effect waves-grey btn-flat pointer">Abbrechen</a>
+  </div>
+</div>
+
+<div [id]="renameModalId" class="modal">
+  <div class="modal-content">
+    <h4>Portfolio umbenennen</h4>
+    <div class="row">
+      <div class="input-field col s12">
+        <input [id]="renameModalIdInput" type="text" class="validate" (keyup)="setNewName($event)" autocomplete="off">
+        <label [for]="renameModalIdInput">Wie soll das Portfolio heißen?</label>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-close waves-effect waves-red btn portfolio-rename-button" [class.disabled]="!newPortfolioName" (click)="renamePortfolio()" autocomplete="off">Umbenennen</a>
+    <a class="quit-portfolio-delete modal-close waves-effect waves-grey btn-flat pointer">Abbrechen</a>
+  </div>
+</div>
+          

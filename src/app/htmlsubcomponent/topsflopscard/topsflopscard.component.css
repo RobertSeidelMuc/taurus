@@ -1,0 +1,86 @@
+h2 {
+  font-size: x-large;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+}
+
+th {
+  padding-left: 2px;
+  padding-right: 2px;
+  font-size: small;
+  font-weight: 500;
+  opacity: 0.8;
+  white-space: nowrap;
+}
+
+td {
+  padding-left: 2px;
+  padding-right: 2px;
+  font-size: medium;
+}
+
+
+details {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.first-column {
+  padding-left: 24px;
+}
+
+.last-column {
+  padding-right: 24px;
+}
+
+@media (max-width: 425px) {
+  .first-column {
+    padding-left: 12px;
+  }
+  
+  .last-column {
+    padding-right: 12px;
+  }
+}
+
+@media (max-width: 320px) {
+  td {
+    font-size: small;
+  }
+}
+
+.card-content {
+  padding: 0;
+}
+
+.left-column {
+  width: 50%;
+  max-width: 50%;
+}
+
+.icon-group {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  width: 25px;
+  height: 25px;
+}
+
+.left-space {
+  margin-left: 12px;
+}
+
+.right-space {
+  margin-right: 12px;
+}
+
+.softer {
+  opacity: 0.8;
+}
+
+.title-arrow {
+  margin-right: 0.75rem;
+  transform: scale(1.5);
+}

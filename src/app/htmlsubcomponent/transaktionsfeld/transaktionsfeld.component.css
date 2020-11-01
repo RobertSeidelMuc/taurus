@@ -1,0 +1,131 @@
+foreignObject {
+  margin-right: 12px;
+}
+
+h2 {
+  font-size: x-large;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+  h2 {
+      font-size: large;
+  }
+}
+
+input.align-right {
+  height: 1.5em;
+  margin-bottom: 4px;
+}
+
+.card {
+  background-color: #37474f;
+}
+
+.icon-group {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 0.5em;
+}
+
+.amount {
+  width: 4em;
+  display: inline-block;
+  margin: 0;
+}
+
+.dropdown-width {
+  max-width: 10rem;
+}
+
+.input-width {
+  width: 4em;
+  display: inline-block;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.second-row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-left: 0x;
+  padding-right: 0px;
+  margin-bottom: 12px;
+}
+
+.fixed-width {
+  width: 6.5em;
+  display: inline-block;
+}
+
+.btn {
+  margin-left: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+@media (max-width: 600px) {
+  .last-section-on-small {
+    margin-top: 0.5em;
+  }
+  .btn {
+    margin-left: 0px;
+    margin-right: 0em;
+    margin-top: 0.5em;
+  }
+  .button-column {
+    margin-top: 1em;
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .second-row {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+  }
+  .row .col {
+    padding-left: 0rem;
+    padding-right: 0rem;
+  }
+  h2 {
+    padding-left: 10px;
+  }
+}
+
+.buy-btn {
+  background-color: #388e3c;
+}
+
+.sell-btn {
+  background-color: #cc0000;
+}
+
+.buy-btn:hover {
+  background-color: #43a047;
+}
+
+.sell-btn:hover {
+  background-color: #e60000;
+}
+
+.modal-content {
+  color: black;
+}
+

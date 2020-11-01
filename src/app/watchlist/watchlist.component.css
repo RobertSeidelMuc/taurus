@@ -1,0 +1,53 @@
+h2 {
+    font-size: x-large;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    margin-top: 1.2rem;
+  }
+
+.ueberschrift {
+    margin-bottom: 16px;
+  }
+  
+#add-watchlist-btn {
+    margin-top: 10px;
+    margin-right: 10px;
+    transform: scale(1.025);
+    transition: ease 250ms;
+    background-color: #43a047;
+  }
+  
+.tap-target {
+    background-color: #43a047;
+    color: white;
+  }
+  
+#add-watchlist-btn:hover {
+    background-color: #45b44a;
+  }
+
+.btn-floating:hover {
+    background-color: #388e3c;
+  }
+  
+.btn {
+    background-color: #388e3c;
+  }
+  
+.btn:hover {
+    background-color: #388e3c;
+  }
+
+
+@media (max-width: 374px) {
+  input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea {
+    padding-top: 1.5rem;
+  }
+}
+
+.modal-footer {
+  box-sizing: border-box;
+  min-height: 56px;
+  height: auto;
+  padding-right: 12px;
+}

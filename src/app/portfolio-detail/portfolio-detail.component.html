@@ -1,0 +1,84 @@
+
+<div class="row">
+    <div class="col s12">
+      <h1 *ngIf="portfolio" class="white-text"><span class="softer">Portfolio: </span>{{ portfolio.name }}</h1>
+    </div>
+    <div class="col s12 m6 l6">
+        <div *ngIf="calculations.coins.length > 0; else nocoinsyet" class="card hoverable">
+            <div class="card-content white-text core-infos">
+                <div class="flex-row"><div class="softer">Aktueller Wert:</div> <div>{{ calculations.portfolioValue  | number:'1.2-2':'de-DE' }} &#36;</div></div> 
+                <div class="flex-row"><div class="softer">Performance seit Kauf:</div> <div><span *ngIf="calculations.HPR >= 0" [ngClass]="{'negative': calculations.HPR < 0, 'positive': calculations.HPR >= 0}">+</span><span [ngClass]="{'negative': calculations.HPR < 0, 'positive': calculations.HPR >= 0}">{{ calculations.HPR | number:'1.0-2':'de-DE' }} %</span></div></div>
+            </div> 
+        </div>
+        <ng-template #nocoinsyet>
+            <div class="no-coins-yet white-text softer">Das Portfolio enthält noch keine Coins. Du kannst Coins hinzufügen, indem du sie im Bereich <b>Coin-Details</b> kaufst.</div>
+        </ng-template>
+    </div>
+
+</div>
+<div *ngIf="calculations.coins.length > 0" class="row">
+    <div class="col s12">
+        <h2 class="white-text">Coins</h2>
+        <div class="card hoverable">
+            <div class="card-content card-with-table" style="overflow-x:auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="first-column">Name</th>
+                            <th>Gesamtwert</th>
+                            <th>Kurs</th>
+                            <th>Investition</th>
+                            <th>Menge</th>
+                            <th class="last-column"><span class="hide-smaller-800px">Performance seit Kauf</span><span class="hide-larger-800px">Perf. s. Kauf</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr app-portfolio-asset-detail *ngFor="let coin of coinDoubles; index as i" [coin]="coin" [index]="i">
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="calculations.coins.length > 0" class="row">
+    <div class="col s12">
+        <h2 class="white-text">Transaktionsverlauf: alle Coins</h2>
+        <div class="card hoverable transaction-history">
+            <div class="card-content card-with-table">
+                <ul class="collection">
+                    <li *ngFor="let transaction of calculations.transactionsPortfolio; let i = index"
+                    class="collection-item hoverable" [class.invisible]="previousThanLastFiveInvisible && i >= 5" #tablerow>
+                        <div class="row">
+                            <div class="history-subtitle col s12">
+                                Coin: {{ transaction[0] }}<br>
+                                Transaktions-ID: {{ transaction[1] }}<br>
+                            </div>
+                            <div class ="history-infos">
+                                <div class="col s12 m6 l6">
+                                    <span class="fixed-width softer">Menge:</span> {{ transaction[5] | number:'1.1':'de-DE'}}<br>
+                                    <span *ngIf="transaction[5] > 0; else soldon"><span class="fixed-width softer">Gekauft am:</span> {{ transaction[2].toMillis() | date:'dd.MM.yyyy HH:mm:ss' }}<br></span>
+                                    <ng-template #soldon>
+                                        <span ><span class="fixed-width softer">Verkauft am:</span> {{ transaction[2].toMillis() | date:'dd.MM.yyyy HH:mm:ss' }}</span>
+                                    </ng-template>
+                                </div>
+                                <div class="col s12 m6 l6">
+                                    <span *ngIf="transaction[5] > 0"><span class="fixed-width softer">Aktueller Wert:</span> {{ findCoinValue(transaction[0], transaction[5]) | number:'1.2-2':'de-DE' }} &#36;<br></span>
+                                    <span *ngIf="transaction[5] > 0; else verkaufswert"><span class="fixed-width softer">Einstandswert:</span> {{ transaction[4] | number:'1.2-2':'de-DE' }} &#36;<br></span>
+                                    <ng-template #verkaufswert>
+                                        <span ><span class="fixed-width softer">Verkaufswert:</span> {{ transaction[4] * -1 | number:'1.2-2':'de-DE' }} &#36;<br></span>
+                                    </ng-template>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div *ngIf="calculations.transactionsPortfolio.length > 5" class="card-action pointer align-center softer z-depth-4" (click)="expandTable()" #expandaction>
+                <p>{{ tableDropDownHinweis }}</p><i class="material-icons drop-down-icon">{{ tableDropDownArrow }}</i>
+            </div>
+        </div>
+    </div>
+</div>

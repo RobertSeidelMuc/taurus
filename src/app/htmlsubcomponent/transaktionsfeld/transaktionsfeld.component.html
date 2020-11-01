@@ -1,0 +1,73 @@
+<div class="card">
+  <div class="card-content">
+    <div class="row">
+      <div class="col s12">
+        <div class="icon-group">
+          <img [src]="icon" class="icon hide-on-tiny" onerror="this.src='../assets/cryptocurrency-icons/svg/color/generic.svg';">
+          <div>
+            <h2 class="white-text">
+              <b>{{ symbol }} | {{ cryptoCurrencyNames[symbol]}}</b> 
+              kaufen und verkaufen
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row second-row">
+      <div class="col s12 m8">
+        <div class="input-field">
+          <select #portfolioselect (change)="selectPortfolio(portfolioselect.value)" class="dropdown-width">
+            <option value="" disabled selected>Bitte auswählen</option>
+            <option *ngFor="let portfolioName of portfolioNames" [value]="portfolioName">{{ portfolioName }}</option>
+          </select>
+          <label>Zielportfolio wählen:</label>
+        </div>
+      </div>
+      <div class="col s12 m4">
+        <a *ngIf="selectedPortfolioName && newID4Frontend" class="waves-effect waves-light btn blue" [routerLink]="['/portfolio-detail', selectedPortfolio.id]">>>&nbsp;{{ selectedPortfolioName }}</a>
+        <p *ngIf="selectedPortfolioName && newID4Frontend" class="green-font">Die Transaktion wurde ausgef&uuml;hrt!</p>
+        <p>Im Portfolio: {{ portfolioAmount }} Stk.</p>
+      </div>
+    </div>
+    <div class="row second-row">
+      <div class="col s12 m4">
+        <div class="fixed-width white-text">24h-Trend:</div> <span [class.green-font]="this.positive===1" [class.red-font]="this.positive===-1">{{this.changeInPercent}}</span><br />
+        <div class="fixed-width white-text">Kurs:</div> <span class="white-text">{{currentRateFormatted}}</span><br />
+      </div>
+      <div class="col s12 m4 last-section-on-small">
+        <div class="fixed-width white-text">Anzahl: </div>
+        <div class="input-field amount">
+          <input placeholder="Anzahl" type="text" (keyup)="onAmountInput($event)" class="align-right">
+        </div>
+        <span class="white-text"> Stk.</span><br />
+        <div class="fixed-width white-text">Gesamtpreis:</div> <span *ngIf="totalPriceFloat > 0" class="align-right input-width white-text">{{ totalPriceFormatted }} </span>
+      </div>
+      <div class="col s12 m4 button-column">
+        <a class="waves-effect waves-light btn buy-btn modal-trigger" [href]="modalBuyHref" [class.disabled]="(!(totalPriceFloat > 0) || !selectedPortfolio)">Kaufen</a>
+        <a class="waves-effect waves-light btn sell-btn modal-trigger" [href]="modalSellHref" [class.disabled]="(!(totalPriceFloat > 0 && requestedAmount <= portfolioAmount) || !selectedPortfolio)">Verkaufen</a>
+      </div>
+    </div>
+
+    <div [id]="modalBuyId" class="modal">
+      <div class="modal-content">
+        <h4>{{ symbol }} kaufen</h4>
+        <p><b>{{ requestedAmount }} {{ symbol }}</b> wirklich für <b>{{ totalPriceFormatted }}</b> kaufen und <b>{{ selectedPortfolioName }}</b> hinzufügen?</p>
+      </div>
+      <div class="modal-footer">
+        <a (click)="transaction('buy')" class="modal-close waves-effect waves-light btn buy-btn">Kaufen</a>
+        <a class="modal-close waves-effect waves-green btn-flat pointer">Abbrechen</a>
+      </div>
+    </div>
+
+    <div [id]="modalSellId" class="modal">
+      <div class="modal-content">
+        <h4>{{ symbol }} verkaufen</h4>
+        <p><b>{{ requestedAmount }} {{ symbol }}</b> wirklich für <b>{{ totalPriceFormatted }}</b> aus <b>{{ selectedPortfolioName }}</b> verkaufen?</p>
+      </div>
+      <div class="modal-footer">
+        <a (click)="transaction('sell')" class="modal-close waves-effect waves-light btn sell-btn">Verkaufen</a>
+        <a class="modal-close waves-effect waves-green btn-flat pointer">Abbrechen</a>
+      </div>
+    </div>
+  </div>
+</div>

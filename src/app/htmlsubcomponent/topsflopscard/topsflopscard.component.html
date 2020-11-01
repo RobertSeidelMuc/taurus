@@ -1,0 +1,31 @@
+<div class="icon-group">
+  <h2 class="white-text icon-group">
+    <i *ngIf="title==='Tops'" class="material-icons title-arrow green-font">trending_up</i>
+    <i *ngIf="title==='Flops'" class="material-icons title-arrow red-font">trending_down</i>
+    <span>{{title}}</span>
+  </h2>
+</div>
+<div class="card">
+  <div class="card-content">
+    <table class="highlight">
+      <thead>
+        <tr>
+          <th class="first-column">Name</th>
+          <th class="hide-on-small-ext">Aktueller Kurs</th>
+          <th class="last-column">24h<span class="hide-on-tiny">-Trend</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr [class.pointer]="auth.user | async"  [routerLink]="['/asset-detail', dataSet.symbol + 'USDT']" *ngFor="let dataSet of currencydata">
+          <td class="first-column">
+            <div class="icon-group">
+              <img [src]="dataSet.icon" class="icon right-space hide-on-tiny"><div class="right-space">{{dataSet.symbol}}</div>
+            </div>
+          </td>
+          <td class="hide-on-small-ext">{{dataSet.currentPrice}}</td>
+          <td class="last-column" [class.green-font]="dataSet.positive===1" [class.red-font]="dataSet.positive===-1">{{dataSet.changeInPercent}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="col s6">
+    <div class="card">
+        <button (click)="addRecFirebase_w_ID()">Zu Portfolio hinzufügen per Set</button>
+    </div>
+    <div class="card">
+        <button (click)="deleteRecFirebase()">Aus Portfolio löschen</button>
+    </div>
+    <div class="card">
+        <button (click)="addTestPortfolio()">Test-Portfolio hinzufügen per Subscribe</button>
+    </div>
+
+    <div class="card">
+        <div class="card-content">
+            <table class="highlight" *ngFor="let portfolio of portfolioObjekte">
+                <thead>
+                    <tr>
+                        <!-- <th (click)="sortTable(portfolio)">{{portfolio.name}}</th> -->
+                        <th [routerLink]="['/portfolio-detail', portfolio.id]">{{portfolio.name}}</th>
+                    </tr>
+                </thead>
+                <!-- <tbody>
+                    <tr *ngFor="let asset of portfolio.assetKeyArray">
+                        <td>{{ portfolio.assets[asset][0] }}, Wert: {{portfolio.assets[asset][1]}}, Menge: {{portfolio.assets[asset][2]}}</td>
+                    </tr>
+                </tbody> -->
+            </table>
+        </div>
+    </div>
+    <div class="card">
+        Gesamtwert aktuell aller Portfolios: {{ totalValueAllPortfolios | number:'1.2-2':'de-DE' }}&euro;<br>
+        Gesamtmenge aktuell aller Portfolios: {{ totalAmountAllPortfolios | number:'1.1-1':'de-DE' }} Stck.;
+    </div>
+</div>

@@ -1,0 +1,8 @@
+h1 , h2, h3, p, li {
+  color: white;
+}
+
+.wrap {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}

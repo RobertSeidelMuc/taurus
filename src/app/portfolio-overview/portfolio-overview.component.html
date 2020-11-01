@@ -1,0 +1,36 @@
+<h2 class="white-text softer ueberschrift">Portfolios</h2>
+<div *ngIf="portfolios">
+  <div class="row">
+    <app-portfoliooverviewcard class="col s12 m12 l12 xl6" *ngFor="let portfolio of portfolios; let i = index" [portfolio]="portfolio" [imageIndex]="i+1"></app-portfoliooverviewcard>
+  </div>
+</div>
+<div *ngIf="portfolios">
+  <p class="white-text">
+    <span *ngIf="portfolios.length === 0" class="softer">Bisher ist noch kein Portfolio vorhanden. Lege jetzt dein erstes Portfolio an.</span><br>
+  </p>
+
+  <div *ngIf="portfolios.length === 0" class="tap-target" data-target="add-portfolio-btn">
+    <div class="tap-target-content">
+      <h5>Los geht’s</h5>
+      <p>Mit diesem Button legst du ein neues Portfolio an.</p>
+    </div>
+  </div>
+</div>
+
+<a id="add-portfolio-btn" class="waves-effect waves-light btn-large btn-floating right accent-color modal-trigger z-depth-3" #addportfoliobtn href="#new-portfolio-modal" (click)="resetPortfolioNameInput()"><i class="material-icons">add</i></a>
+
+<div id="new-portfolio-modal" class="modal">
+  <div class="modal-content">
+    <h4>Neues Portfolio erstellen</h4>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="portfolio-name" type="text" class="validate" (keyup)="setNewPortfolioName($event)" [(ngModel)]="newPortfolioName" autocomplete="off">
+        <label for="portfolio-name">Wie soll das Portfolio heißen?</label>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-close waves-effect waves-green btn accent-color" [class.disabled]="!newPortfolioName" (click)="addPortfolio()">Portfolio anlegen</a>
+    <a id="quit-portfolio-add" class="modal-close waves-effect waves-grey btn-flat pointer">Abbrechen</a>
+  </div>
+</div>

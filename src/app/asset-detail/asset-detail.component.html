@@ -1,0 +1,138 @@
+
+<div class="section">
+    <div class="row top-row">
+      <div class="col s12 m12 l6 top-row-column">
+        <div class="card fix-card">
+          <div class="card-image box">
+            <div class="card-title text">Ticker</div>
+          </div>
+            <div class="card-content">
+              <span class="white-text fixed-width"><i class="small primary-icon-color material-icons">compare_arrows</i>Symbol:
+              </span><span >{{ pairSelect ? pairSelect : "BTCUSDT" }}</span><br>
+              <span class="white-text fixed-width"><i class="small primary-icon-color material-icons">speed</i>Intervall:
+              </span><span >{{ intervalSelect ? intervalSelect : "1d" }}</span><br>
+              <span class="card-text white-text fixed-width"><i class="small primary-icon-color material-icons">local_atm</i>Aktueller Preis: </span><span
+                >{{ lastPrice | number:'1.2-8':'de-DE'}}</span><br>
+              <span class="card-text white-text fixed-width"><i class="small primary-icon-color material-icons">equalizer</i>24h-Volumen: </span><span
+                >{{ priceTickerSymbol.volume | number:'1.2':'de-DE'}}</span><br>
+              <span *ngIf="priceTickerSymbol.priceChangePercent > 0">
+                <span class="fixed-width"><i class="small green-text material-icons"> arrow_upward</i><span class="card-text white-text">24h-Veränderung:
+                </span></span><span class="green-text">{{ priceTickerSymbol.priceChangePercent | number:'1.2-8':'de-DE'}} (%)</span>
+              </span>
+              <span *ngIf="priceTickerSymbol.priceChangePercent < 0">
+                <span class="fixed-width"><i class="small red-text material-icons"> arrow_downward</i><span class="card-text white-text">24h-Veränderung:
+                </span></span><span class=" red-text">{{ priceTickerSymbol.priceChangePercent | number:'1.2-8':'de-DE'}} (%)</span>
+              </span>
+              <br>
+              <span class="fixed-width"><i class="small primary-icon-color material-icons prefix">trending_up</i>
+              <span class="card-text white-text">24h-Hoch: </span></span>
+              <span >{{ priceTickerSymbol.highPrice | number:'1.2-8':'de-DE'}}</span><br>
+              <span class="fixed-width"><i class="small primary-icon-color material-icons">trending_down</i>
+              <span class="card-text white-text">24h-Tief: </span></span>
+              <span
+                >{{ priceTickerSymbol.lowPrice | number:'1.2-8':'de-DE'}}</span><br>
+            </div>
+          </div>
+      </div>
+      <div class="col s12 m12 l6 top-row-column">
+        <div class="card fix-card">
+          <div class="card-image box">
+            <div class="card-title text">Einstellungen</div>
+          </div>
+          <div class="card-content">
+            <div class="input-field">
+              <i class="material-icons primary-icon-color prefix">compare_arrows</i>
+              <input type="text" placeholder="" autocomplete="off" [(ngModel)]="pairSelect" id="autocomplete-input" class="autocomplete"
+                #autocomplete>
+              <label class="white-text" for="autocomplete-input" [class.label-lifted]="pairSelect">Wähle ein Asset-Paar</label>
+            </div>
+            <div class="input-field input-field-select">
+              <i class="material-icons primary-icon-color prefix">speed</i>
+              <select [(ngModel)]="intervalSelect" id="choose-interval">
+                <option value="5m">5 Minuten</option>
+                <option value="15m">15 Minuten</option>
+                <option value="30m">30 Minuten</option>
+                <option value="1h">1 Stunde</option>
+                <option value="1d">1 Tag</option>
+                <option value="1w">1 Woche</option>
+              </select>
+              <label class="white-text" for="choose-interval">Wähle einen Intervall</label>
+            </div>
+            <div class="input-field input-field-select">
+              <i class="material-icons primary-icon-color prefix">cake</i>
+              <select [(ngModel)]="candleSelect" id="select-candle">
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="150">150</option>
+                <option value="150">200</option>
+                <option value="300">300</option>
+                <option value="500">500</option>
+              </select>
+              <label class="white-text" for="select-candle">Wähle eine Kerzenanzahl</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+       <app-transaktionsfeld [symbol]="pairFirstCoin"></app-transaktionsfeld>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <div class="progress purple">
+          <div [ngClass]="loading ? 'indeterminate' : '' "></div>
+        </div>
+        <div class="card">
+          <div class="card-image box">
+            <div class="card-title text">Candlestick Chart</div>
+          </div>
+            <div class="card-content candlestick-content">
+          <apx-chart #mixedChart [series]="mixedChartOptions.series" [chart]="mixedChartOptions.chart"
+            [xaxis]="mixedChartOptions.xaxis" [yaxis]="mixedChartOptions.yaxis" [title]="mixedChartOptions.title"
+            [stroke]="mixedChartOptions.stroke" [legend]="mixedChartOptions.legend" [tooltip]="mixedChartOptions.tooltip"></apx-chart>
+        </div>
+        </div>
+      </div>
+      <div class="col s12">
+        <div class="card">
+          <div class="card-image box">
+            <div class="card-title text">RSI & Stochastic</div>
+          </div>
+          <apx-chart #lineChart [series]="lineChartOptions.series" [chart]="lineChartOptions.chart"
+            [xaxis]="lineChartOptions.xaxis" [yaxis]="lineChartOptions.yaxis" [dataLabels]="lineChartOptions.dataLabels" [grid]="lineChartOptions.grid"
+            [stroke]="lineChartOptions.stroke" [title]="lineChartOptions.title" [legend]="lineChartOptions.legend"></apx-chart>
+        </div>
+      </div>
+      <div class="col s12">
+        <div class="card">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 m6">
+        <div class="card">
+          <div class="card-image box">
+            <div class="card-title text">Volumen letzte 7 Tage</div>
+          </div>
+          <apx-chart #chart2 [series]="BarChart1.series" [chart]="BarChart1.chart" [dataLabels]="BarChart1.dataLabels"
+            [plotOptions]="BarChart1.plotOptions" [yaxis]="BarChart1.yaxis" [xaxis]="BarChart1.xaxis"
+            [fill]="BarChart1.fill" [title]="BarChart1.title"></apx-chart>
+        </div>
+      </div>
+      <div class="col s12 m6">
+        <div class="card">
+          <div class="card-image box">
+            <div class="card-title text">Kaufen vs Verkaufen (%)</div>
+          </div>
+          <apx-chart #percentBuy
+          [series]="percentBuyOptions.series"
+          [chart]="percentBuyOptions.chart"
+          [plotOptions]="percentBuyOptions.plotOptions"
+          [labels]="percentBuyOptions.labels"
+          [fill]="percentBuyOptions.fill"
+        ></apx-chart>
+        </div>
+      </div>
+    </div>

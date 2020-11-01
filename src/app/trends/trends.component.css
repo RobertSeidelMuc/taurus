@@ -1,0 +1,97 @@
+h2 {
+  font-size: x-large;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+}
+
+th {
+  font-size: small;
+  font-weight: 500;
+  opacity: 0.8;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+td {
+  padding-left: 8px;
+  padding-right: 8px;
+  font-size: medium;
+}
+
+.first-column {
+  padding-left: 24px;
+}
+
+.last-column {
+  padding-right: 24px;
+}
+
+@media (max-width: 425px) {
+  .first-column {
+    padding-left: 12px;
+  }
+  
+  .last-column {
+    padding-right: 12px;
+  }
+}
+
+@media (max-width: 320px) {
+  td {
+    font-size: small;
+  }
+}
+
+p {
+  font-size: large;
+  font-weight: 300;
+}
+
+.currency-list {
+  padding: 0;
+}
+
+.coin-info-group {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  width: 25px;
+  height: 25px;
+}
+
+.card .card-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0px;
+  background-color: #455a64;
+  transition: ease 100ms;
+}
+
+.card .card-action:hover {
+  background-color: #546e7a;
+}
+
+.drop-down-icon {
+  color: rgba(255,255,255,0.7);
+  transform: scale(1.5);
+}
+
+.left-space {
+  margin-left: 12px;
+}
+
+.right-space {
+  margin-right: 12px;
+}
+
+.currency-list td.chart-cell {
+  padding: 0px;
+}
+
+.invisible {
+  display: none;
+}

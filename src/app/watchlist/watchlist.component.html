@@ -1,0 +1,24 @@
+<h2 class="white-text softer ueberschrift" >Watchlist</h2>
+<div>
+
+    <a id="add-watchlist-btn" class="waves-effect waves-light btn-small btn-floating right accent-color modal-trigger"
+        #addwatchlistbtn href="#modalWatchlist" (click)="clearPairSelect()"><i class="material-icons">add</i></a>
+</div>
+
+<div id="modalWatchlist" class="modal">
+    <div class="modal-content">
+        <h4>Coin der Watchlist hinzufügen</h4>
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="text" autocomplete="off" placeholder="" [(ngModel)]="pairSelect" (change)="setPairSelect($event)" id="autocomplete-input" class="autocomplete"
+                    #autocomplete>
+                <label for="autocomplete-input">Wähle einen Coin aus, um ihn der Watchlist hinzuzufügen:</label>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a class="modal-close waves-effect waves-green btn accent-color"  [class.disabled]="!pairSelect" (click)="addToWatchlist()">Zur Watchlist
+            hinzufügen</a>
+        <a id="quit-watchlist-add" class="modal-close waves-effect waves-red btn-flat pointer">Abbrechen</a>
+    </div>
+</div>

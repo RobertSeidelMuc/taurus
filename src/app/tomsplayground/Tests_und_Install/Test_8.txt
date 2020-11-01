@@ -1,0 +1,8 @@
+this.Post_collection = this.afs.collection('posts');
+return this.Posts = this.Post_collection.snapshotChanges().map(actions => {
+  return actions.map(a => {
+    const data = a.payload.doc.data();
+    const id = a.payload.doc.id;
+    return { id, ...data };
+  });
+});
