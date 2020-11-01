@@ -4,6 +4,8 @@
 
 Taurus is an Angular app that allows users to simulate buying and selling cryptocurrencies on the basis of up-to-date market data. Our three-person team wrote Taurus in two and a half weeks in June/July 2020 as the final project of a JavaScript bootcamp. 
 
+We are currently working on a successor in React on a private repository.
+
 ## Stack
 - Framework: Angular
 - CSS library: [Materialize](https://materializecss.com/)
